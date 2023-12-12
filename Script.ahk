@@ -1,7 +1,9 @@
-#NoEnv ; Esta é a diretiva que evita a expansão das variáveis de ambiente.
-Numpad1:: ; Este é o atalho que vai ativar o script.
+#NoEnv
+Numpad1::
+; Mostra uma caixa de mensagem para o usuário digitar uma mensagem de commit
+InputBox, commitMessage, Digite uma mensagem de commit:, , , 100
+; Envia os comandos Git com a mensagem de commit fornecida pelo usuário
 Send, git add .{Enter}
-send, git commit -m "first commit" {Enter}
-send, git push -u origin main {Enter}
- ; Este é o comando que vai enviar o texto que você quer digitar.
-Return ; Este é o comando que vai encerrar o script.
+Send, git commit -m "%commitMessage%" {Enter}
+Send, git push -u origin main {Enter}
+Return
